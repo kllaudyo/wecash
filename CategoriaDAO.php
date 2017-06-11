@@ -70,7 +70,7 @@
 
             $categorias = array();
 
-            if($row = $database_prepare->fetch(PDO::FETCH_ASSOC))
+            while($row = $database_prepare->fetch(PDO::FETCH_ASSOC))
             {
                 $categoria = new Categoria();
                 $empresa = new Empresa();
