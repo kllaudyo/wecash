@@ -61,6 +61,9 @@ class Usuario
 
     public function setEmpresa($empresa)
     {
+        if(!$empresa instanceof Empresa){
+            throw new Exception("O parametro deve ser um objeto Empresa");
+        }
         $this->empresa = $empresa;
     }
 
