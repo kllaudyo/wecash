@@ -19,16 +19,44 @@ class UsuarioDAO
         $this->connection = $connection;
     }
 
-    public function buscarUsuario($email, $senha)
+    public function buscarPorId($id)
     {
         $database_query = "
-          select u.id_usuario,
+          SELECT u.id_usuario,
                  u.nm_usuario,
                  u.nm_email,
                  u.id_empresa
-            from tb_usuarios u 
-           where u.nm_email = ?
-             and u.nm_senha = ? ";
+            FROM tb_usuarios u 
+           WHERE u.id_usuario = ? ";
+
+        $database_prepare = $this->connection->prepare($database_query);
+        $database_prepare->execute(array($id));
+
+        if($row = $database_prepare->fetch(PDO::FETCH_ASSOC))
+        {
+            $usuario = new Usuario();
+            $empresa = new Empresa();
+            $empresa->setId($row["id_empresa"]);
+            $usuario->setId($row["id_usuario"]);
+            $usuario->setNome($row["nm_usuario"]);
+            $usuario->setEmail($row["nm_email"]);
+            $usuario->setEmpresa($empresa);
+            return $usuario;
+        }
+
+        return null;
+    }
+
+    public function buscarPorEmailSenha($email, $senha)
+    {
+        $database_query = "
+          SELECT u.id_usuario,
+                 u.nm_usuario,
+                 u.nm_email,
+                 u.id_empresa
+            FROM tb_usuarios u 
+           WHERE u.nm_email = ?
+             AND u.nm_senha = ? ";
 
         $database_prepare = $this->connection->prepare($database_query);
         $database_prepare->execute(array($email, $senha));
@@ -48,18 +76,19 @@ class UsuarioDAO
         return null;
     }
 
-    public function buscarUsuarios($empresa)
+    public function buscarPorEmpresa($empresa)
     {
-        if(!$empresa instanceof Empresa){
+        if(!$empresa instanceof Empresa)
+        {
             throw new Exception("O parametro precisa ser um objeto Empresa");
         }
 
         $database_query = "
-          select u.id_usuario,
+          SELECT u.id_usuario,
                  u.nm_usuario,
                  u.nm_email
-            from tb_usuarios u 
-           where u.id_empresa = ? ";
+            FROM tb_usuarios u 
+           WHERE u.id_empresa = ? ";
 
         $database_prepare = $this->connection->prepare($database_query);
         $database_prepare->execute(array($empresa->getId()));
@@ -75,8 +104,49 @@ class UsuarioDAO
 
             array_push($usuarios, $usuario);
         }
-
         return $usuarios;
+    }
+
+    public function adicionar($usuario)
+    {
+        if(!$usuario instanceof Usuario)
+        {
+            throw new Exception("O parametro precisa ser um objeto Usuario");
+        }
+        $database_query = "
+            INSERT INTO tb_usuarios
+            (id_empresa, nm_usuario, nm_email, nm_senha) 
+            VALUES
+            (?, ?, ?, ?)            
+        ";
+    }
+
+    public function alterar($usuario)
+    {
+        if(!$usuario instanceof Usuario)
+        {
+            throw new Exception("O parametro precisa ser um objeto Usuario");
+        }
+        $database_query = "
+            UPDATE tb_usuarios u
+               SET u.nm_usuario = ?
+                  ,u.nm_email = ?
+                  ,u.nm_senha = ?
+             WHERE u.id_usuario = ?
+        ";
+        $database_prepare = $this->connection->prepare($database_query);
+        $database_prepare->execute(array($usuario->getNome(), $usuario->getEmail(), $usuario->getSenha(), $usuario->getId()));
+    }
+
+    public function remover($usuario)
+    {
+        if(!$usuario instanceof Usuario)
+        {
+            throw new Exception("O parametro precisa ser um objeto Usuario");
+        }
+        $database_query = "DELETE FROM tb_usuarios WHERE id_usuario = ? ";
+        $database_prepare = $this->connection->prepare($database_query);
+        $database_prepare->execute(array($usuario->getId()));
     }
 
 }
