@@ -9,7 +9,7 @@
 class Empresa
 {
     private $id;
-    private $empresa;
+    private $nome;
 
     public function getId()
     {
@@ -21,14 +21,14 @@ class Empresa
         $this->id = $id;
     }
 
-    public function getEmpresa()
+    public function getNome()
     {
-        return $this->empresa;
+        return $this->nome;
     }
 
-    public function setEmpresa($empresa)
+    public function setNome($nome)
     {
-        $this->empresa = $empresa;
+        $this->nome = $nome;
     }
 
 }

@@ -11,6 +11,7 @@ class Categoria
     private $id;
     private $descricao;
     private $tipo;
+    private $empresa;
 
     public function getId()
     {
@@ -41,5 +42,16 @@ class Categoria
     {
         $this->tipo = $tipo;
     }
+
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+    }
+
 
 }

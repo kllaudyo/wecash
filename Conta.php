@@ -10,6 +10,7 @@ class Conta
 {
     private $id;
     private $descricao;
+    private $empresa;
 
     public function getId()
     {
@@ -30,5 +31,16 @@ class Conta
     {
         $this->descricao = $descricao;
     }
+
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+    }
+
 
 }
