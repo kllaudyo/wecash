@@ -1,6 +1,6 @@
 <div class="modal fade" id="modal-categoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form method="post" action="categoria-salvar.php">
-        <input type="hidden" name="id" value="0">
+        <input type="hidden" name="id" value="0" />
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">

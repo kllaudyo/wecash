@@ -57,14 +57,14 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Procurar...">
             </form>
             <ul class="navbar-nav my-2 my-lg-0 ">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Movimentação <span class="sr-only">(current)</span></a>
+                <li class="nav-item <?=Site::navbar_active(Site::pagina_atual(), "/movimento-lista.php")?>">
+                    <a class="nav-link" href="/movimento-lista.php">Movimentação <?=Site::navbar_current(Site::pagina_atual(), "/movimento-lista.php")?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Conta</a>
+                <li class="nav-item <?=Site::navbar_active(Site::pagina_atual(), "/conta-lista.php")?>">
+                    <a class="nav-link" href="/conta-lista.php">Conta <?=Site::navbar_current(Site::pagina_atual(), "/conta-lista.php")?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categoria</a>
+                <li class="nav-item <?=Site::navbar_active(Site::pagina_atual(), "/categoria-lista.php")?>">
+                    <a class="nav-link" href="/categoria-lista.php">Categoria <?=Site::navbar_current(Site::pagina_atual(), "/categoria-lista.php")?></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuUsuarioLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

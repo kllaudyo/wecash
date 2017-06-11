@@ -14,6 +14,7 @@
 
     $dao = new CategoriaDAO($database_connection);
     $categorias = $dao->buscarPorEmpresa(empresa());
+
 ?>
     <br />
     <h4>Categoria</h4>
@@ -40,7 +41,12 @@
                 </td>
                 <td class="col-sm-6"><?=$categoria->getDescricao();?></td>
                 <td><img src="images/pencil.png" /></td>
-                <td><img src="images/close-circle.png" /></td>
+                <td>
+                    <form class="form-inline" method="post" action="categoria-remover.php">
+                        <input type="hidden" name="id" value="<?=$categoria->getId();?>" />
+                        <input type="image" src="images/close-circle.png" />
+                    </form>
+                </td>
             </tr>
             <?php
                 endforeach;
