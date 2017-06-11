@@ -113,12 +113,18 @@ class UsuarioDAO
         {
             throw new Exception("O parametro precisa ser um objeto Usuario");
         }
+
         $database_query = "
             INSERT INTO tb_usuarios
             (id_empresa, nm_usuario, nm_email, nm_senha) 
             VALUES
             (?, ?, ?, ?)            
         ";
+
+        $database_prepare = $this->connection->prepare($database_query);
+        $database_prepare->execute(array($usuario->getEmpresa()->getId(), $usuario->getNome(), $usuario->getEmail(), $usuario->getSenha()));
+
+        return $database_prepare->rowCount();
     }
 
     public function alterar($usuario)
@@ -127,6 +133,7 @@ class UsuarioDAO
         {
             throw new Exception("O parametro precisa ser um objeto Usuario");
         }
+
         $database_query = "
             UPDATE tb_usuarios u
                SET u.nm_usuario = ?
@@ -134,8 +141,11 @@ class UsuarioDAO
                   ,u.nm_senha = ?
              WHERE u.id_usuario = ?
         ";
+
         $database_prepare = $this->connection->prepare($database_query);
         $database_prepare->execute(array($usuario->getNome(), $usuario->getEmail(), $usuario->getSenha(), $usuario->getId()));
+
+        return $database_prepare->rowCount();
     }
 
     public function remover($usuario)
@@ -144,9 +154,13 @@ class UsuarioDAO
         {
             throw new Exception("O parametro precisa ser um objeto Usuario");
         }
+
         $database_query = "DELETE FROM tb_usuarios WHERE id_usuario = ? ";
+
         $database_prepare = $this->connection->prepare($database_query);
         $database_prepare->execute(array($usuario->getId()));
+
+        return $database_prepare->rowCount();
     }
 
 }
