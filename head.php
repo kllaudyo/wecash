@@ -38,6 +38,9 @@
         </button>
         <a class="navbar-brand" href="#">WeCa$h</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+<?php
+    if(is_logado()):
+?>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown" style="margin-right: 15px">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,11 +73,27 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Conta</a>
                         <a class="dropdown-item" href="#">Configurações</a>
-                        <a class="dropdown-item" href="#">Sair</a>
+                        <a class="dropdown-item" href="logout.php">Sair</a>
                     </div>
                 </li>
             </ul>
         </div>
+<?php
+    endif;
+    if(!is_logado()):
+?>
+        <form action="login.php" method="post" class="form-inline">
+            <!--
+            form-control-sm
+            btn-sm
+            -->
+            <input class="form-control mr-sm-2" type="text" placeholder="email" name="email" />
+            <input class="form-control mr-sm-2" type="password" placeholder="senha" name="senha" />
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Entrar</button>
+        </form>
+<?php
+    endif;
+?>
     </div>
 </nav><!-- Navbar Top -->
 

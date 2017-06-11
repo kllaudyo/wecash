@@ -53,9 +53,12 @@
               SELECT u.id_usuario,
                      u.nm_usuario,
                      u.nm_email,
-                     u.id_empresa
-                FROM tb_usuarios u 
-               WHERE u.nm_email = ?
+                     e.id_empresa,
+                     e.nm_empresa
+                FROM tb_usuarios u,
+                     tb_empresas e
+               WHERE u.id_empresa = e.id_empresa
+                 AND u.nm_email = ?
                  AND u.nm_senha = ? ";
 
             $database_prepare = $this->connection->prepare($database_query);
@@ -66,6 +69,7 @@
                 $usuario = new Usuario();
                 $empresa = new Empresa();
                 $empresa->setId($row["id_empresa"]);
+                $empresa->setNome($row["nm_empresa"]);
                 $usuario->setId($row["id_usuario"]);
                 $usuario->setNome($row["nm_usuario"]);
                 $usuario->setEmail($row["nm_email"]);

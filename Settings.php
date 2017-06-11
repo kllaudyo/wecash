@@ -14,6 +14,31 @@
         print "</pre>";
     }
 
+    function server()
+    {
+        debug($_SERVER);
+    }
+
+    function get()
+    {
+        debug($_GET);
+    }
+
+    function post()
+    {
+        debug($_POST);
+    }
+
+    function session()
+    {
+        debug($_SESSION);
+    }
+
+    function cookie()
+    {
+        debug($_COOKIE);
+    }
+
     function import($class_name)
     {
         include($class_name.".php");

@@ -3,11 +3,11 @@
      * Created by PhpStorm.
      * User: claudio
      * Date: 11/06/17
-     * Time: 19:09
+     * Time: 20:03
      */
 
-    require_once "Settings.php";
     require_once "Acesso.php";
 
-    require_once "head.php";
-    require_once "foot.php";
+    logout();
+
+    header("Location: index.php");

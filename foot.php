@@ -4,7 +4,7 @@
 <?php
     require_once "modal_movimentacoes.php";
     require_once "modal_contas.php";
-    require_once "modal_categorias.php";
+    require_once "categoria-modal.php";
 ?>
 <!-- Modals-->
 
