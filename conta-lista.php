@@ -16,7 +16,7 @@
 
 ?>
     <br />
-    <h4>Conta</h4>
+    <h4>Contas</h4>
     <br />
 <?php
     if(count($contas) == 0):

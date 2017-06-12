@@ -1,6 +1,20 @@
 <?php
+    /**
+     * Created by PhpStorm.
+     * User: claudio
+     * Date: 11/06/17
+     * Time: 21:41
+     */
+
+    require_once "Settings.php";
+    require_once "Acesso.php";
+    require_once "Database.php";
+    controle_acesso();
     require_once "head.php";
 ?>
+    <br />
+    <h4>Movimentações</h4>
+    <br />
     <ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link" href="#">Janeiro</a>
@@ -59,22 +73,6 @@
             <td>R$ 3.500,00</td>
             <td>11/04/2017</td>
             <td>11/04/2017</td>
-        </tr>
-        <tr>
-            <th scope="row"><input type="checkbox" /></th>
-            <td>Habitação</td>
-            <td>Condomínio</td>
-            <td>R$ 700,00</td>
-            <td>10/04/2017</td>
-            <td>07/04/2017</td>
-        </tr>
-        <tr>
-            <th scope="row"><input type="checkbox" /></th>
-            <td>Financiamentos</td>
-            <td>Parcela da moto</td>
-            <td>R$ 647,90</td>
-            <td>16/04/2017</td>
-            <td>08/04/2017</td>
         </tr>
         </tbody>
     </table>

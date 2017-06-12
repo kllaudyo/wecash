@@ -16,7 +16,7 @@
 
 ?>
     <br />
-    <h4>Categoria</h4>
+    <h4>Categorias</h4>
     <br />
 <?php
     if(count($categorias) == 0):

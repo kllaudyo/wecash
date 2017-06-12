@@ -9,6 +9,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
     <style>
+
+        @media (min-width: 576px)
+        .bd-pageheader {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .bd-pageheader {
+            padding: 2rem 15px;
+            margin-bottom: 1.5rem;
+            color: #cdbfe3;
+            text-align: left;
+            background-color: #563d7c;
+        }
+
         .footer {
             position: absolute;
             bottom: 0;
