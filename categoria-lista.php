@@ -7,9 +7,8 @@
      */
     require_once "Settings.php";
     require_once "Acesso.php";
-    controle_acesso();
-
     require_once "Database.php";
+    controle_acesso();
     require_once "head.php";
 
     $dao = new CategoriaDAO($database_connection);
@@ -19,6 +18,15 @@
     <br />
     <h4>Categoria</h4>
     <br />
+<?php
+    if(count($categorias) == 0):
+?>
+    <p class="alert alert-warning" role="alert">
+        <strong>Ops...</strong> Ainda não há categorias cadastradas, registre um agora mesmo clicando em adicionar
+    </p>
+<?php
+    else:
+?>
     <table class="table table-hover table-striped">
         <thead>
             <tr>
@@ -53,7 +61,7 @@
             ?>
         </tbody>
     </table>
-
 <?php
+    endif;
     require_once "foot.php";
 ?>
