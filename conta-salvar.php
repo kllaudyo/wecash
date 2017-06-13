@@ -12,7 +12,7 @@
 
     controle_acesso();
 
-    $url = str_replace($origin = $_SERVER["HTTP_ORIGIN"] ."/", "", $_SERVER["HTTP_REFERER"]);
+    $url = str_replace($_SERVER["HTTP_ORIGIN"] ."/", "", $_SERVER["HTTP_REFERER"]);
 
     if(isset($_POST))
     {
